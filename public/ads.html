@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loading...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { text-align:center; font-family:Arial; background:#f5f3ff; }
+    .box { margin-top:100px; }
+    button { padding:12px 25px; background:#8a2be2; color:#fff; border:none; border-radius:8px; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Verifikasi Akses</h2>
+
+  <!-- 🔥 IKLAN -->
+  <div>
+    <p>Tempat iklan (Adsterra / Monetag)</p>
+  </div>
+
+  <p>Tunggu <span id="t">5</span> detik</p>
+  <button id="go" disabled>Lanjutkan</button>
+</div>
+
+<script>
+const params = new URLSearchParams(location.search);
+const target = params.get("url");
+
+let t = 5;
+const el = document.getElementById("t");
+const btn = document.getElementById("go");
+
+const i = setInterval(()=>{
+  t--;
+  el.innerText = t;
+  if(t<=0){
+    clearInterval(i);
+    btn.disabled = false;
+  }
+},1000);
+
+btn.onclick = ()=> location.href = target;
+</script>
+
+</body>
+</html>
